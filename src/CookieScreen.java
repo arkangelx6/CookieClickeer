@@ -67,11 +67,11 @@ public class CookieScreen extends Canvas implements MouseListener, Runnable, Act
 		setVisible(true);
 	}
 	static JPanel panel;
-	JPanel panel2;
+	JPanel panel2, panel3;
 	static JFrame frame;
-	JFrame frame2; 
+	JFrame frame2, frame3; 
 	static JButton button, button2, button3;
-	JButton button4;
+	JButton button4, button5;
 	static JTextField tf, tf2, tf3, tf4, tf5;
 	static JFormattedTextField t;
 	static long counter = 0L;
@@ -82,6 +82,7 @@ public class CookieScreen extends Canvas implements MouseListener, Runnable, Act
 	public static void main(String[] args) {
         CookieScreen cs = new CookieScreen();
         cs.buildMenuScreen();
+        cs.buildInstructionScreen();
 		frame = new JFrame("COOKIECLICKER");
 		
 		
@@ -167,7 +168,33 @@ public class CookieScreen extends Canvas implements MouseListener, Runnable, Act
 		frame2.setVisible(true);
 	}
 	
-	
+	public void buildInstructionScreen() {
+		frame3 = new JFrame("Instruction");
+		 panel3 = new JPanel();
+		frame3.add(panel3);
+		frame3.setSize(700, 600);
+		button5 = new JButton();
+		panel3.add(button5);
+		button5.addActionListener(this);
+		
+		//frame2.setSize(700, 600);
+		//button4.setSize(560, 480);
+		
+		
+		/*try {
+            frame2.setContentPane(new JLabel(new ImageIcon(ImageIO.read(new File("MenuS.jpg")))));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }*/
+		try {
+			Image image = ImageIO.read(new File("Instructions.jpg"));
+		    button5.setIcon(new ImageIcon(image));
+		  } catch (Exception ex) {
+		    System.out.println(ex);
+		  }
+		frame3.pack();
+		//frame3.setVisible(true);
+	}
 	
 	
 /*	public void buildGUI(){
@@ -393,6 +420,12 @@ public class CookieScreen extends Canvas implements MouseListener, Runnable, Act
 		if(arg0.getSource() == button4) {
 			System.out.println("button4");
 			frame2.dispose(); 
+			frame3.setVisible(true);
+		}
+		
+		if(arg0.getSource() == button5) {
+			System.out.println("button5");
+			frame3.dispose(); 
 			frame.setVisible(true);
 		}
 	}
